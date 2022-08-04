@@ -19,7 +19,7 @@ session = shopify.Session(SHOPIFY_STORE_URL, SHOPIFY_API_VERSION, SHOPIFY_ACCESS
 def index():
 	return "Hello World"
 
-@app.route('/skutoid')
+@app.route('/skutoid/')
 def skuToId():
 	try:
 		sku = request.args['sku']
