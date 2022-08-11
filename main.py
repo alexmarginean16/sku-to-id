@@ -31,12 +31,26 @@ def skuToId():
 	iterator = shopify.Variant.find()
 	for variant in iterator:
 		if str(variant.sku) == str(sku):
-			return str(variant.id)
+			response = {
+				"item": {
+					"Name": variant.title,
+					"Sku": variant.sku,
+					"ShopifyID": variant.id
+				}
+			}
+			return response
 
 	while iterator.has_next_page():
 		for variant in iterator:
 			if str(variant.sku) == str(sku):
-				return str(variant.id)
+				response = {
+					"item": {
+						"Name": variant.title,
+						"Sku": variant.sku,
+						"ShopifyID": variant.id
+					}
+				}
+				return response
 
 		iterator = iterator.next_page()
 
